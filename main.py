@@ -42,7 +42,7 @@ class GetUserAnalytics(Resource):
 
     @api.param(
         "Date and Time",
-        description="The date and time you are looking to find a reservation (01/01/2021 11:00)",
+        description="The date and time you are looking to find a reservation (01/01/2021 11:00 AM)",
         type = "string",
     )
 
@@ -53,11 +53,9 @@ class GetUserAnalytics(Resource):
 
         # check for valid date and time
         try:
-            date = datetime.datetime.strptime(dateString, "%m/%d/%Y %I:%M").date()
+            date = datetime.datetime.strptime(dateString, "%m/%d/%Y %I:%M %p")
         except:
             abort(500, "Invalid date!")
 
         # find the reservation
-
-
-        return {"monitoring": True, "spots_remaining": 1, "currently_availible": False}
+        return findReservation(date)
