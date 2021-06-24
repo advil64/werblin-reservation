@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:$PORT --log-level=debug --timeout 1000 --graceful-timeout 1000 --workers=1 main:app
+web: gunicorn --bind 0.0.0.0:$PORT --log-level=debug --timeout 1000 --graceful-timeout 1000 --workers=5 main:app

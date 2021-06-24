@@ -5,7 +5,7 @@ import json
 from flask_ngrok import run_with_ngrok
 import datetime
 import time
-from .query import findReservation
+from query import findReservation
 
 app = Flask(__name__)
 cors = CORS(app)
