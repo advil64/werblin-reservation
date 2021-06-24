@@ -26,6 +26,7 @@ GET_RESERVATION = api.model("Response", {
     "monitoring": fields.Boolean(),
     "spots_remaining": fields.Integer(),
     "currently_availible": fields.Boolean(),
+    "category": fields.String()
     })
 
 # documentation for swagger UI
@@ -46,10 +47,17 @@ class GetUserAnalytics(Resource):
         type = "string",
     )
 
+    @api.param(
+        "Category",
+        description="Type of reservation you are looking to make (badminton, patio pool, olympic pool, basketball, gym, volleyball)",
+        type = "string",
+    )
+
     @api.marshal_with(GET_RESERVATION, mask=None)
     def get(self):
 
         dateString = request.args.get("Date and Time")
+        category = request.args.get("Category")
 
         # check for valid date and time
         try:
@@ -57,5 +65,9 @@ class GetUserAnalytics(Resource):
         except:
             abort(500, "Invalid date!")
 
+        # check for valid category
+        if category not in ["badminton", "patio pool", "olympic pool", "basketball", "gym", "volleyball"]:
+            abort(500, "Invalid category!")
+
         # find the reservation
-        return findReservation(date)
+        return findReservation(date, category)
