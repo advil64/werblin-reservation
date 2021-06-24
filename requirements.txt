@@ -1,0 +1,11 @@
+flask
+flask-cors
+autopep8
+pandas
+jupyter
+notebook
+python-dotenv
+ipykernel
+gunicorn
+flask-ngrok
+scrapy
