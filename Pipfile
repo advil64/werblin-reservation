@@ -20,6 +20,8 @@ scrapy = "*"
 beautifulsoup4 = "*"
 flask-restx = "*"
 aniso8601 = "*"
+redis = "*"
+celery = "*"
 
 [requires]
 python_version = "3.7"

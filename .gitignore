@@ -6,3 +6,5 @@ abcnews-date-text.csv
 .env
 .ipynb_checkpoints
 News_Category_Dataset_v2.json
+redis-3.2.1/*
+*.rdb
